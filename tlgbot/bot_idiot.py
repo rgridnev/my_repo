@@ -1,3 +1,4 @@
+#from modules import dayscounter
 import datetime
 
 def dayscounter(year,mon,day, dest):
@@ -12,7 +13,6 @@ def dayscounter(year,mon,day, dest):
     mmm = (dest, 'через {} дней {} часа {} мин {} сек.'.format(d.days, hh, mm, ss))
     rrr=' '.join(mmm)
     return rrr
-
  
 # Подключаем модуль для Телеграма
 
@@ -30,7 +30,8 @@ from telebot import types
 
 # Настраиваем прокси
 from telebot import apihelper
-apihelper.proxy = {'https': 'socks5h://geek:socks@t.geekclass.ru:7777'}
+#apihelper.proxy = {'https': 'socks5h://geek:socks@t.geekclass.ru:7777'}
+#apihelper.proxy = {'https':'https://88.204.154.155:8080'}
 
  
 # Метод, который получает сообщения и обрабатывает их
