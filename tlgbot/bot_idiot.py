@@ -110,7 +110,7 @@ def callback_worker(call):
         msg = dayscounter(2020,5,15, 'На корм акулам Оки')
 
     elif call.data == "chuhloma":
-        msg = dayscounter(2020,57,11, 'В Костромские леса')
+        msg = dayscounter(2020,6,11, 'В Костромские леса')
         
     elif call.data == "veget":
         msg = 'Овощ!'
