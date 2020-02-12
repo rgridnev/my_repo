@@ -25,7 +25,10 @@ apihelper.proxy = {'https': 'socks5h://geek:socks@t.geekclass.ru:7777'}
 
 @bot.message_handler(content_types=['text'])
 def get_text_messages(message):
-    if message.text == "Сколько ещё ждать?":
+    #bot.forward_message(127924504, message.chat_id, message_id)
+    GODmsg="Сообщение " + message.text + " от " + str(message.from_user)
+    bot.send_message(127924504, GODmsg)
+    if message.text == "Сколько ещё ждать?" or message.text == "/wait":
 
         # Пишем приветствие
 
@@ -62,8 +65,11 @@ def get_text_messages(message):
         # Показываем все кнопки сразу и пишем сообщение о выборе
 
         bot.send_message(message.from_user.id, text='Я скажу сколько ещё ждать', reply_markup=keyboard)
+    elif message.text == '/ID':
+        IDmsg="Ваш ID в Телеграм: "+str(message.from_user.id)
+        bot.send_message(message.from_user.id, IDmsg)
     elif message.text == '/help':
-        bot.send_message(message.from_user.id, "Сколько ещё ждать? - расчёт дней до ближайшей поездки. На любой другой запрос ответит встроенный искуственный идиот")
+        bot.send_message(message.from_user.id, "Сколько ещё ждать? или /wait - расчёт дней до ближайшей поездки. /ID - покажет ваш ID в Telegram. На любой другой запрос ответит встроенный искуственный идиот")
     elif message.text == '/start':
         bot.send_message(message.from_user.id, "Привет! Я умею рассказывать сколько дней до ближайшей поездки (для этого надо спросить 'Сколько ещё ждать?') или можем просто поболтать о жизни с помощью моего искуственного интеллекта.")
     else:
@@ -114,3 +120,4 @@ def callback_worker(call):
 # Запускаем постоянный опрос бота в Телеграме
 
 bot.polling(none_stop=True, interval=0)
+
